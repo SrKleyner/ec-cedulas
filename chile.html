@@ -3,31 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador de Cédulas Ecuatorianas</title>
-    <link rel="stylesheet" href="/src/style.css" />
+    <title>Generador de RUTs Chilenos</title>
+    <link rel="stylesheet" href="/src/chile.css" />
   </head>
   <body>
     <div id="app">
       <nav id="nav">
-        <a href="/" class="active">🇪🇨 Cédulas</a>
-        <a href="/chile.html">🇨🇱 RUTs</a>
+        <a href="/">🇪🇨 Cédulas</a>
+        <a href="/chile.html" class="active">🇨🇱 RUTs</a>
         <a href="/edad.html">🎂 Edad</a>
       </nav>
-      <h1>Generador de Cédulas Ecuatorianas</h1>
-      <button id="generate-btn">✨ Generar Cédulas</button>
+      <h1>Generador de RUTs Chilenos</h1>
+      <button id="generate-btn">✨ Generar RUTs</button>
       <div id="table-container">
-        <table id="cedula-table">
+        <table id="rut-table">
           <thead>
             <tr>
               <th class="col-index">#</th>
-              <th class="col-cedula">Cédula</th>
+              <th class="col-rut">RUT</th>
               <th class="col-copy"></th>
             </tr>
           </thead>
-          <tbody id="cedula-body"></tbody>
+          <tbody id="rut-body"></tbody>
         </table>
       </div>
     </div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/chile.ts"></script>
   </body>
 </html>

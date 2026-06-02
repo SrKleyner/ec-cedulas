@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Edad</title>
+    <link rel="stylesheet" href="/src/edad.css" />
+  </head>
+  <body>
+    <div id="app">
+      <nav id="nav">
+        <a href="/">🇪🇨 Cédulas</a>
+        <a href="/chile.html">🇨🇱 RUTs</a>
+        <a href="/edad.html" class="active">🎂 Edad</a>
+      </nav>
+      <h1>Calculadora de Edad</h1>
+      <div id="form-container">
+        <div class="field">
+          <label for="birth-date">Fecha de nacimiento</label>
+          <input type="date" id="birth-date" />
+        </div>
+        <div class="field">
+          <label for="target-date">Fecha específica</label>
+          <input type="date" id="target-date" />
+        </div>
+        <button id="calculate-btn">🎂 Calcular Edad</button>
+      </div>
+      <div id="result-container">
+        <div id="result-age"></div>
+        <div id="result-major"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/edad.ts"></script>
+  </body>
+</html>

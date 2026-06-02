@@ -1,6 +1,6 @@
 # ec-cedulas
 
-Single-page Vite + TypeScript app that generates valid Ecuadorian cédula numbers (Módulo 10 algorithm).
+Multi-page Vite + TypeScript app that generates valid Ecuadorian cédulas (Módulo 10) and Chilean RUTs (Módulo 11).
 
 ## Commands
 
@@ -10,11 +10,14 @@ Single-page Vite + TypeScript app that generates valid Ecuadorian cédula number
 | `pnpm build` | `tsc --noEmit` then `vite build` |
 | `pnpm preview` | Preview production build |
 
-## Architecture
+## Multi-page setup (`vite.config.ts`)
 
-- **Entrypoint**: `index.html` → loads `/src/main.ts` as ES module
-- **CSS**: linked via `<link rel="stylesheet" href="/src/style.css">` in `index.html` (not imported in TS)
-- **No routing, no framework** — vanilla TS manipulating the DOM
+Two HTML entry points declared in `build.rollupOptions.input`:
+- `index.html` → `/src/main.ts` + `/src/style.css`
+  - `chile.html` → `/src/chile.ts` + `/src/chile.css`
+  - `edad.html` → `/src/edad.ts` + `/src/edad.css`
+
+Both pages share the same visual theme (same CSS variables) but load independent style files.
 
 ## TypeScript quirks
 
@@ -23,6 +26,13 @@ Single-page Vite + TypeScript app that generates valid Ecuadorian cédula number
 - `noEmit: true` — Vite handles bundling, tsc is for type-checking only
 - `allowImportingTsExtensions: true` — import `.ts` files directly
 
-## Cédula generation (src/main.ts)
+## Algorithms
 
-Algorithm (Módulo 10) is self-contained in `generarCedula()`. Province codes 01–24, 7-digit sequential, check digit via weighted sum with pattern [2,1,2,1,2,1,2,1,2], subtracting 9 if product ≥ 10.
+### Ecuadorian cédula (`src/main.ts`)
+Módulo 10. Province codes 01–24, 7-digit sequential, check digit via weighted sum with pattern [2,1,2,1,2,1,2,1,2], subtracting 9 if product ≥ 10.
+
+### Chilean RUT (`src/chile.ts`)
+Módulo 11. Random 8-digit base, check digit via reverse iteration with factor sequence [2,3,4,5,6,7] (repeating), DV = 11 − (sum % 11), mapped to 0 (if 11) or K (if 10).
+
+### Age calculator (`src/edad.ts`)
+Takes two dates (birth + target), computes years/months/days difference with month-length correction. Displays whether person is 18+.
