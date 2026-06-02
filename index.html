@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de Cédulas Ecuatorianas</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>Generador de Cédulas Ecuatorianas</h1>
+      <button id="generate-btn">✨ Generar Cédulas</button>
+      <div id="table-container">
+        <table id="cedula-table">
+          <thead>
+            <tr>
+              <th class="col-index">#</th>
+              <th class="col-cedula">Cédula</th>
+              <th class="col-copy"></th>
+            </tr>
+          </thead>
+          <tbody id="cedula-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
